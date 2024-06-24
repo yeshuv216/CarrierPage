@@ -66,7 +66,7 @@ const RewardsPreviliges = () => {
   return (
     <main>
       <Head>
-        <title>R Centric | Rewards and Benefits</title>
+        <title>Omniyat | Rewards and Benefits</title>
       </Head>
       <section className="relative">
         <Image
@@ -84,7 +84,7 @@ const RewardsPreviliges = () => {
       >
         <h1 className="title text-center">MELIÁREWARDS: BEYOND POINTS</h1>
         <p className="para text-center mt-6 lg:mt-8 w-full lg:w-[50%] text-pretty">
-          While your residence is enrolled in R Centric, you can enjoy a
+          While your residence is enrolled in Omniyat, you can enjoy a
           MeliáRewards Silver tier membership. MeliáRewards is the Meliá Hotels
           International loyalty program offering benefits and exclusive offers
           across Meliá Hotels.

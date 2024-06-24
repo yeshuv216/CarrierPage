@@ -8,7 +8,7 @@ import { CountrySelector, usePhoneInput } from "react-international-phone";
 import "react-international-phone/style.css";
 import CheveronDownIcon from "./icons/CheveronDownIcon";
 
-const BookingForm = ({ isSideForm = false }) => {
+const BookingForm = ({ isSideForm = false,submitClick }) => {
   const [formValues, setFormValues] = useState({
     firstName: "",
     lastName: "",
@@ -104,192 +104,16 @@ const BookingForm = ({ isSideForm = false }) => {
           : "w-11/12 lg:w-[27%] gap-4 lg:gap-8 mt-12"
       )}
     >
-      <div
-        className={cn(
-          "grid grid-cols-2 gap-5",
-          isSideForm ? "gap-4 lg:gap-5" : ""
-        )}
-      >
-        <div className={cn(isSideForm ? "inputContainer2" : "inputContainer")}>
-          <label
-            htmlFor="firstName"
-            className={cn(isSideForm ? "inputLabel2" : "inputLabel")}
-          >
-            First Name*
-          </label>
-          <input
-            type="text"
-            required
-            name="firstName"
-            id="firstName"
-            value={formValues.firstName}
-            onChange={handleChange}
-            className={cn(isSideForm ? "inputItem2 border-b-2 border-white-500 lg:w-[200px] w-[200px]" : "inputItem border-b-2 border-white-500 lg:w-[200px] w-[200px]")}
-          />
-        </div>
-
-        <div className={cn(isSideForm ? "inputContainer2" : "inputContainer")}>
-          <label
-            htmlFor="lastName"
-            className={cn(isSideForm ? "inputLabel2" : "inputLabel")}
-          >
-            Last Name*
-          </label>
-          <input
-            type="text"
-            required
-            name="lastName"
-            id="lastName"
-            value={formValues.lastName}
-            onChange={handleChange}
-            className={cn(isSideForm ? "inputItem2 border-b-2 border-white-500 lg:w-[200px] w-[200px]" : "inputItem border-b-2 border-white-500 lg:w-[200px] w-[200px]")}
-          />
-        </div>
-      </div>
-
-      <div
-        className={
-          isSideForm
-            ? "flex lg:grid lg:grid-cols-1 gap-5"
-            : "flex lg:grid lg:grid-cols-2 gap-5"
-        }
-      >
-        <div
-          className={cn(
-            isSideForm ? "inputContainer2" : "inputContainer",
-            "w-[35%] lg:w-full"
-          )}
-        >
-          <label
-            htmlFor="phone"
-            className={cn(isSideForm ? "inputLabel2" : "inputLabel")}
-          >
-            Phone*
-          </label>
-          <input
-            required
-            type="number"
-            name="phone"
-            id="phone"
-            value={formValues.phone}
-            onChange={handleChange}
-            className={cn(isSideForm ? "inputItem2 border-b-2 border-white-500 lg:w-[200px] w-[200px]" : "inputItem border-b-2 border-white-500 lg:w-[200px] w-[200px]")}
-          />
-       </div>
-       <div
-          className={cn(
-            isSideForm ? "inputContainer2" : "inputContainer",
-            "w-[35%] lg:w-full"
-          )}
-        >
-        <label
-          htmlFor="email"
-          className={cn(isSideForm ? "inputLabel2" : "inputLabel")}
-        >
-          Email Address*
-        </label>
-        <input
-          required
-          type="email"
-          name="email"
-          id="email"
-          value={formValues.email}
-          onChange={handleChange}
-          className={cn(isSideForm ? "inputItem2 border-b-2 border-white-500 lg:w-[200px] w-[200px]" : "inputItem border-b-2 border-white-500 lg:w-[200px] w-[200px]")}
-        />
-        </div>
-      </div>
-
-      <div
-        className={
-          isSideForm
-            ? "flex lg:grid lg:grid-cols-1 gap-5"
-            : "flex lg:grid lg:grid-cols-2 gap-5"
-        }
-      >
-        <div
-          className={cn(
-            isSideForm ? "inputContainer2" : "inputContainer",
-            "w-[35%] lg:w-full"
-          )}
-        >
-          <label
-            htmlFor="countryCode"
-            className={cn(isSideForm ? "inputLabel2" : "inputLabel")}
-          >
-            Country Code*
-          </label>
-          <CountrySelector
-            selectedCountry={phoneInput.country}
-            onSelect={(country) => phoneInput.setCountry(country.iso2)}
-            renderButtonWrapper={({ children, rootProps }) => (
-              <button
-                type="button"
-                {...rootProps}
-                className={cn(
-                  "relative flex items-center bg-[#000] w-full text-sm",
-                  isSideForm
-                    ? "py-1.5 lg:py-2 pl-2 text-xs lg:text-sm"
-                    : "py-2 lg:py-3 pl-2 lg:pl-4 "
-                )}
-              >
-                {children}
-                <div className="flex gap-2">
-                  {phoneInput.phone}{" "}
-                  <span className="hidden lg:block"> {rootProps.title}</span>
-                </div>
-                <CheveronDownIcon className="size-2.5 absolute right-2 top-1/2 -translate-y-1/2" />
-              </button>
-            )}
-            dropdownStyleProps={{
-              style: {
-                top: "55px",
-              },
-            }}
-          />
-        </div>
-
-      </div>
-
-      <div className={cn(isSideForm ? "inputContainer2" : "inputContainer")}>
-        <label
-          htmlFor="buildingName"
-          className={cn(isSideForm ? "inputLabel2" : "inputLabel")}
-        >
-          Interested In*
-        </label>
-        <select
-          name="buildingName"
-          id="buildingName"
-          className={cn(isSideForm ? "inputItem2 border-b-2 border-white-500 lg:w-[500px] w-[500px]" : "inputItem border-b-2 border-white-500 lg:w-[500px] w-[500px]")}
-          value={formValues.buildingName}
-          onChange={handleChange}
-          required
-        >
-          <option value=""></option>
-        </select>
-      </div>
-
-      <div className={cn(isSideForm ? "inputContainer2" : "inputContainer")}>
-        <label
-          htmlFor="propertyType"
-          className={cn(isSideForm ? "inputLabel2" : "inputLabel")}
-        >
-         Type Your Message
-        </label>
-        <select
-          name="propertyType"
-          id="propertyType"
-          className={cn(isSideForm ? "inputItem2 border-b-2 border-white-500 lg:w-[500px] w-[500px]" : "inputItem border-b-2 border-white-500 lg:w-[500px] w-[500px]")}
-          value={formValues.propertyType}
-          onChange={handleChange}
-          required
-        >
-        </select>
-      </div>
-
-      <div className="flex justify-center">
+      
+      <div className="">
+        <input style={{height:30,marginTop:10,borderColor:'#000',borderWidth:1,padding:5,width:500}} placeholder="Name"></input>
+        <input style={{height:30,marginTop:10,borderColor:'#000',borderWidth:1,padding:5,width:500}} placeholder="Phone no."></input>
+        <input style={{height:30,marginTop:10,borderColor:'#000',borderWidth:1,padding:5,width:500}} placeholder="Email ID"></input>
+        <input style={{height:30,marginTop:10,borderColor:'#000',borderWidth:1,padding:5,width:500}} placeholder="Years of Experience"></input>
+        <input style={{height:30,marginTop:10,borderColor:'#000',borderWidth:1,padding:5,width:500}} placeholder="Upload Resume*"></input>
         <button
+          onClick={submitClick}
+          style={{width:500}}
           type="submit"
           className={cn("cta", isSideForm ? "mt-4 lg:mt-6" : "mt-8 lg:mt-12")}
         >

@@ -87,7 +87,7 @@ const Benefits = () => {
   return (
     <main>
       <Head>
-        <title>R Centric | Benefits</title>
+        <title>Omniyat | Benefits</title>
       </Head>
       <section className="relative">
         <Image
@@ -110,7 +110,7 @@ const Benefits = () => {
           </h1>
           <p className="para text-center mt-4 w-full lg:w-[45%]">
             Your residence at The Opus is not just a property; it&apos;s a
-            masterpiece. With R Centric, it also offers a regular, steady
+            masterpiece. With Omniyat, it also offers a regular, steady
             return on your investment.
           </p>
         </div>

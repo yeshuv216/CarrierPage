@@ -5,7 +5,7 @@ const Thankyou = () => {
   return (
     <>
       <Head>
-        <title>R Centric | Thank you</title>
+        <title>Omniyat | Thank you</title>
       </Head>
       <div className="h-[100vh] w-[100vw] bg-[url('/img/asset5.webp')] bg-cover bg-no-repeat bg-right lg:bg-center relative font-adobeGaramondPro">
         <div className="h-full w-full text-center pt-5 bg-black bg-opacity-50 flex flex-col items-center justify-center text-white text-[25px]">

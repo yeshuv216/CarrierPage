@@ -6,7 +6,7 @@ const ContactUs = () => {
   return (
     <main>
       <Head>
-        <title>R Centric | Contact Us</title>
+        <title>Omniyat | Contact Us</title>
       </Head>
       <section className="pt-28 lg:pt-48 flex flex-col items-center pb-10 lg:pb-28 dataFadeContainer bg-[#FAFAFA]">
         <h1 className="title text-center">Express Your Interest</h1>
@@ -16,7 +16,7 @@ const ContactUs = () => {
       <section className="w-11/12 container mt-16 lg:mt-32">
         <div className="flex flex-col items-center gap-4 text-center">
           <h1 className="title">
-            Schedule a consultation with R Centric <br /> and elevate your
+            Schedule a consultation with Omniyat <br /> and elevate your
             Investment
           </h1>
           <p className="para ">

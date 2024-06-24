@@ -66,7 +66,7 @@ const Footer = () => {
       <div className="border-t border-white border-opacity-5 pt-6 pb-20">
         <div className="grid grid-cols-7 justify-items-center lg:justify-items-start gap-y-4">
           <div className="lg:pl-16 text-sm col-span-7 lg:col-span-2 font-radikalLight">
-            R Centric &copy; 2024
+            Omniyat &copy; 2024
           </div>
           <div className="col-span-7 lg:col-span-3 w-full"></div>
           <div className="col-span-7 lg:col-span-2 flex gap-4 text-sm ml-[20px] lg:ml-0">

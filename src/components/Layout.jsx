@@ -43,21 +43,21 @@ const Layout = ({ children }) => {
           <link rel="icon" type="image/x-icon" href="/logo.svg" />
           <meta
             name="description"
-            content="R Centric is Software service company"
+            content="Omniyat is Software service company"
           />
-          <meta property="og:title" content="R Centric" />
+          <meta property="og:title" content="Omniyat" />
           <meta property="og:type" content="article" />
           <meta property="og:image" content="/logo.svg" />
           <meta
             name="twitter:card"
-            content="R Centric is a software service company"
+            content="Omniyat is a software service company"
           ></meta>
           <meta
             property="og:description"
-            content="R Centric is a software service company"
+            content="Omniyat is a software service company"
           ></meta>
-          <meta property="og:site_name" content="R Centric" />
-          <meta name="twitter:image:alt" content="R Centric"></meta>
+          <meta property="og:site_name" content="Omniyat" />
+          <meta name="twitter:image:alt" content="Omniyat"></meta>
         </Head>
         {router.pathname !== "/thankyou" ? (
           <>

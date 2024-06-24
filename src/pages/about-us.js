@@ -77,7 +77,7 @@ export default function AboutUs() {
   return (
     <>
       <Head>
-        <title>R Centric</title>
+        <title>Omniyat</title>
       </Head>
 
       <section  className="relative">

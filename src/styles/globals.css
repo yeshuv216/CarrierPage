@@ -139,7 +139,7 @@ input[type="number"] {
 #navbar {
   transition: top 0.6s;
   background-color: #000;
-  opacity: 19%;
+  opacity: 50%;
   height: 6vh;
 }
 #video {
