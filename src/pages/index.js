@@ -78,6 +78,7 @@ export default function Home() {
 
       {jobData.map((item,index)=>(
         <section
+        key={index}
         className="items-center m-5  mb-2 scontainer w-12/12"
       >
         <div  style={{backgroundColor:"#979797",height:1}}></div>
@@ -132,7 +133,6 @@ Assist in follow-up design Information, NOCs from DEWA, DCD, DCAA and others app
         </p>
         <button
           onClick={()=>setShowJobs(true)}
-          style={{width:500}}
           style={{backgroundColor:"#000",color:"#fff",height:60,width:300,opacity:"50%",marginBottom:"15%"}}
           type="submit"
           className={"mt-8 lg:mt-12 bg-light-black"}
