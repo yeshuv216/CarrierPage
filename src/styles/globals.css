@@ -25,7 +25,7 @@
   }
 
   .btn {
-    @apply py-2.5 lg:py-3 px-16 lg:px-24 text-sm uppercase font-thin bg-[#957758] text-white;
+    @apply py-2.5 lg:py-3 px-12 lg:px-16 text-sm uppercase tracking-wider bg-black/50 text-white;
   }
 
   .abs-center {
@@ -75,7 +75,7 @@
   }
 
   .inputItem {
-    @apply placeholder:text-gray pl-2 lg:pl-4 py-2.5 lg:py-4 text-sm w-full bg-[#EFE9E4] font-light;
+    @apply placeholder:text-black/80 py-2 pl-5 text-sm border border-black;
   }
 
   .inputItem2 {
@@ -91,18 +91,8 @@ body::-webkit-scrollbar {
 /* Hide scrollbar for IE, Edge and Firefox */
 html,
 body {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-}
-
-.scrollHide::-webkit-scrollbar {
-  display: none;
-}
-
-/* Hide scrollbar for IE, Edge and Firefox */
-.scrollHide {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; 
+  scrollbar-width: none; 
 }
 
 html.lenis {
@@ -113,9 +103,9 @@ html.lenis {
   scroll-behavior: auto !important;
 }
 
-/* .lenis.lenis-smooth [data-lenis-prevent] {
+.lenis.lenis-smooth [data-lenis-prevent] {
   overscroll-behavior: contain;
-} */
+}
 
 .lenis.lenis-stopped {
   overflow: hidden;

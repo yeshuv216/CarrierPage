@@ -167,16 +167,14 @@ const Navbar = () => {
       <nav
         ref={navbarRef}
         className={cn(
-          "flex items-center justify-center  lg:h-auto w-full top-0 fixed left-0 z-[20] bg-black/20 backdrop-blur-[10px] transition-opacity duration-[0.2s]"
+          "flex items-center justify-center lg:h-auto w-full top-0 fixed left-0 z-[20] bg-black/20 backdrop-blur-[16px]"
         )}
       >
-        <div className="container h-[60px] w-11/12 flex items-center justify-center gap-[350px] text-white tracking-wider text-sm relative">
-          <div className="absolute left-0 flex items-center gap-5 lg:hidden">
-            <HamburgerIcon
-              className=" size-6 cursor-pointer"
-              onClick={() => openSidebar()}
-            />
-          </div>
+        <div className="container h-[60px] w-11/12 flex items-center justify-between gap-[350px] text-white tracking-wider text-sm relative">
+          <HamburgerIcon
+            className=" size-6 cursor-pointer"
+            onClick={() => openSidebar()}
+          />
 
           <Link href="/" aria-label="home" className="abs-center">
             <div
@@ -193,6 +191,10 @@ const Navbar = () => {
               <OmniyatMonogramLogo className="w-auto h-full" />
             </div>
           </Link>
+
+          <button className="font-optima px-4 py-2.5 bg-black/35">
+            Contact Us
+          </button>
         </div>
       </nav>
       <div

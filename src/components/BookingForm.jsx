@@ -6,7 +6,7 @@ import { useContext, useState } from "react";
 import { usePhoneInput } from "react-international-phone";
 import "react-international-phone/style.css";
 
-const BookingForm = ({ isSideForm = false,submitClick }) => {
+const BookingForm = ({ isSideForm = false, submitClick }) => {
   const [formValues, setFormValues] = useState({
     firstName: "",
     lastName: "",
@@ -52,7 +52,9 @@ const BookingForm = ({ isSideForm = false,submitClick }) => {
   var li_fat_id = searchParams.get("li_fat_id");
   var twclid = searchParams.get("twclid");
   var gad = searchParams.get("gad");
-  var options=[{label:"Banking",value:"", label:"Construction",value:""}]
+  var options = [
+    { label: "Banking", value: "", label: "Construction", value: "" },
+  ];
 
   const handleOnSubmit = async (e) => {
     e.preventDefault();
@@ -96,47 +98,64 @@ const BookingForm = ({ isSideForm = false,submitClick }) => {
   return (
     <form
       onSubmit={handleOnSubmit}
-      className={"w-full gap-2 lg:gap-2 mt-6 lg:mt-10 h-[10vh]"}
+      className={"w-full flex flex-col gap-3 lg:gap-3.5 mt-6 lg:mt-10"}
     >
-      
-      <div>
-        <input style={{height:30,marginTop:10,borderColor:'#000',borderWidth:1,padding:5,width:500}} placeholder="Name"></input>
-        <input style={{height:30,marginTop:10,borderColor:'#000',borderWidth:1,padding:5,width:500}} placeholder="Email ID"></input>
-        <input style={{height:30,marginTop:10,borderColor:'#000',borderWidth:1,padding:5,width:500}} placeholder="Phone no."></input>
-        <input style={{height:30,marginTop:10,borderColor:'#000',borderWidth:1,padding:5,width:500}} placeholder="Current Employer"></input>
-        <select style={{height:30,marginTop:10,borderColor:'#000',borderWidth:1,padding:5,width:500}} placeholder="Industry Experience">
-          {options.map((item,index)=>(
-           <options key={index}>{item?.label}</options>
+      <>
+        <input type="text" className="inputItem" placeholder="Name"></input>
+        <input type="text" className="inputItem" placeholder="Email ID"></input>
+        <input
+          type="text"
+          className="inputItem"
+          placeholder="Phone no."
+        ></input>
+        <input
+          type="text"
+          className="inputItem"
+          placeholder="Current Employer"
+        ></input>
+        <select className="inputItem" placeholder="Industry Experience">
+          <option value="">Industry Experience</option>
+          {options.map((item, index) => (
+            <options key={index}>{item?.label}</options>
           ))}
         </select>
-        <input style={{height:30,marginTop:10,borderColor:'#000',borderWidth:1,padding:5,width:500}} placeholder="Current Title"></input>
-        <select style={{height:30,marginTop:10,borderColor:'#000',borderWidth:1,padding:5,width:500}} placeholder="Total Years of
-Experience">
-          {options.map((item,index)=>(
-           <options key={index}>{item?.label}</options>
+        <input
+          type="text"
+          className="inputItem"
+          placeholder="Current Title"
+        ></input>
+        <select
+          className="inputItem"
+          placeholder="Total Years of
+Experience"
+        >
+          <option value="">Years of Experience</option>
+          {options.map((item, index) => (
+            <option key={index}>{item?.label}</option>
           ))}
         </select>
-        <select style={{height:30,marginTop:10,borderColor:'#000',borderWidth:1,padding:5,width:500}} placeholder="Years of Experience
-in UAE">
-          {options.map((item,index)=>(
-           <options key={index}>{item?.label}</options>
+        <select className="inputItem" placeholder="Notice Period">
+          <option value="">Notice Period</option>
+          {options.map((item, index) => (
+            <options key={index}>{item?.label}</options>
           ))}
         </select>
-        <select style={{height:30,marginTop:10,borderColor:'#000',borderWidth:1,padding:5,width:500}} placeholder="Notice Period">
-          {options.map((item,index)=>(
-           <options key={index}>{item?.label}</options>
-          ))}
-        </select>
-       <p style={{fontSize:10,marginTop:10}} className="text-grey">Resume * [ File types : .pdf, .docx, .doc | File size : up to 5 MB ]</p> 
-        <input style={{height:30,borderColor:'#000',borderWidth:1,padding:5,width:500}} placeholder="Upload Resume*"></input>
+        <p className="text-xs mt-2.5 font-light">
+          Resume * [ File types : .pdf, .docx, .doc | File size : up to 5 MB ]
+        </p>
+        <input
+          type="file"
+          className="inputItem"
+          placeholder="Upload Resume*"
+        ></input>
         <button
           onClick={submitClick}
-          className="font-ABeeZee text-sm mt-[6%]" style={{height:30,width:150,backgroundColor:'#000',opacity:'50%',color:'white'}}
+          className="text-sm w-full text-left bg-black/40 uppercase py-2 pl-14"
           type="submit"
         >
-          Submit Now
+          Submit
         </button>
-      </div>
+      </>
     </form>
   );
 };
