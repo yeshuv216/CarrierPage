@@ -50,11 +50,11 @@ const Layout = ({ children }) => {
           <meta property="og:image" content="/logo.svg" />
           <meta
             name="twitter:card"
-            content="Omniyat is a software service company"
+            content="Omniyat "
           ></meta>
           <meta
             property="og:description"
-            content="Omniyat is a software service company"
+            content="Omniyat"
           ></meta>
           <meta property="og:site_name" content="Omniyat" />
           <meta name="twitter:image:alt" content="Omniyat"></meta>
