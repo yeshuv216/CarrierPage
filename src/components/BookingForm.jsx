@@ -129,7 +129,8 @@ in UAE">
            <options>{item?.label}</options>
           ))}
         </select>
-        <input style={{height:30,marginTop:10,borderColor:'#000',borderWidth:1,padding:5,width:500}} placeholder="Upload Resume*"></input>
+       <p style={{fontSize:10,marginTop:10}} className="text-grey">Resume * [ File types : .pdf, .docx, .doc | File size : up to 5 MB ]</p> 
+        <input style={{height:30,borderColor:'#000',borderWidth:1,padding:5,width:500}} placeholder="Upload Resume*"></input>
         <button
           onClick={submitClick}
           className="font-ABeeZee text-sm mt-[6%]" style={{height:30,width:150,backgroundColor:'#000',opacity:'50%',color:'white'}}

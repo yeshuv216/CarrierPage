@@ -72,23 +72,23 @@ export default function Home() {
       </section>
       {clickedIndex==index?(
       <section className="h-[70vh] scroll space-between horizontal">
-<div  style={{overflow:scroll}} className="font-Poppins items-center text-black-40 ml-[8.5%]">
-<div style={{fontWeight:'bold'}} className="font-Poppins text-black-bold mt-5">
+<div className="font-Poppins items-center text-black-40 ml-[8.5%] scroll-auto h-[1vh]">
+<div style={{fontWeight:'bold'}} className="font-Poppins  text-black-bold mt-5">
 RESPONSIBILITIES:
 </div>
 <br/>
-<div style={{color:'grey',width:500}}>
+<div className="font-Poppins h-[1vh] text-black-bold mt-5 scroll-auto" style={{color:'grey',width:500}}>
 . Delivering projects on time to budget & Coordination considering objectives and requirements.
 <br/>
-.Produce and control of designs in compliance with regulatory By-Laws and Design guidelines.
+. Produce and control of designs in compliance with regulatory By-Laws and Design guidelines.
 <br/>
-.Knowledge of Local and International Building Codes for Compliance and Design approvals
+. Knowledge of Local and International Building Codes for Compliance and Design approvals
 <br/>
-.Knowledge of IBC, NFPA, DBC, FLSC Codes and applications in Design development process
+. Knowledge of IBC, NFPA, DBC, FLSC Codes and applications in Design development process
 <br/>
-.Familiar with DM, Green Building, DDA, JAFZA, TECOM and other Regulations under AHJ
+. Familiar with DM, Green Building, DDA, JAFZA, TECOM and other Regulations under AHJ
 <br/>
-.Assist in follow-up design Information, NOCs from DEWA, DCD, DCAA and others applicable Revit Architecture to LOD 300, documentation, data extracts, clash detections & Project delivery.
+. Assist in follow-up design Information, NOCs from DEWA, DCD, DCAA and others applicable Revit Architecture to LOD 300, documentation, data extracts, clash detections & Project delivery.
 </div>
 </div>
 <div className="ml-[15%]">

@@ -60,16 +60,16 @@ const Footer = () => {
         </div>
         <div className="ml-[30vw]">
         <p className="text-[#7f7f7f]">Stay in the know</p>
-          <button
-            onClick={() => setIsFromOpen(true)}
-            className="text-[10px] lg:text-[14px] uppercase lg:w-[220px] font-medium tracking-wider h-[40px] bg-white text-black w-[140px] mt-2"
+          <input
+            className="border-1 border-l-white-500 text-white"
+            style={{backgroundColor:'#000'}}
+            placeholder="Email Address"
           >
-            Contact Us
-          </button>
-          <p className="mt-4 text-center lg:text-left font-light">
+          </input>
+          <p className="text-sm text-[#7f7f7f] mt-2">
             By signing up i want to hear about new <br />
             updates and masterpieces and agree with <br />
-            the data protection policy of Liv
+            the data protection policy of Omniyat
           </p>
         </div>
       </div>
