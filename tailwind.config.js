@@ -1,4 +1,3 @@
-const {nextui} = require('@nextui-org/theme');
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -14,15 +13,12 @@ module.exports = {
       },
       fontFamily: {
         poppins: ["Poppins"],
+        optima: ["Optima"],
         bodoniModa: ["Bodoni Moda"],
       },
       colors: {
-        darkGreen: "#133536",
-        grey: "#4D4F52",
-        cream: "#E8D5C8",
-        lightCream: "#faf7f4",
+        gold: "#BB9C65",
       },
     },
-  },
-  plugins: [nextui()],
+  }
 };

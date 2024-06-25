@@ -1,12 +1,10 @@
-import { cn } from "@/lib/utils";
 import { BookingFormContext } from "@/providers/BookingFormProvider";
 import parsePhoneNumber from "libphonenumber-js";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/router";
 import { useContext, useState } from "react";
-import { CountrySelector, usePhoneInput } from "react-international-phone";
+import { usePhoneInput } from "react-international-phone";
 import "react-international-phone/style.css";
-import CheveronDownIcon from "./icons/CheveronDownIcon";
 
 const BookingForm = ({ isSideForm = false,submitClick }) => {
   const [formValues, setFormValues] = useState({

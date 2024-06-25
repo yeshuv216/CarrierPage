@@ -1,11 +1,7 @@
-import React, { useContext } from "react";
-import Logo from "./icons/Logo";
 import Link from "next/link";
-import CheveronDownIcon from "./icons/CheveronDownIcon";
-import { BookingFormContext } from "@/providers/BookingFormProvider";
+import { CheveronDown } from "./Icons";
 
 const Footer = () => {
-  const { setIsFromOpen } = useContext(BookingFormContext);
   return (
     <div className="bg-black text-white pt-10">
       <div className="grid grid-cols-7 mb-2 pb-[15px] justify-items-center lg:justify-items-start">
@@ -100,7 +96,7 @@ const Footer = () => {
                 <option value="it">Italian</option>
                 <option value="ru">Russian</option>
               </select>
-              <CheveronDownIcon className="size-2 text-white absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none" />
+              <CheveronDown className="size-2 text-white absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none" />
             </div>
           </div>
         </div>

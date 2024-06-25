@@ -1,23 +1,28 @@
-import Link from "next/link";
-import Image from "next/image";
-import { useContext, useEffect, useRef, useState } from "react";
-import { useWindowScroll } from "react-use";
-import { useRouter } from "next/router";
+import useWindowScroll from "@/hooks/useWindowScroll";
 import { cn } from "@/lib/utils";
-import HamburgerIcon from "./icons/HamburgerIcon";
-import XMarkIcon from "./icons/XMarkIcon";
-import { BookingFormContext } from "@/providers/BookingFormProvider";
+import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import React, { useEffect, useRef, useState } from "react";
+import {
+  HamburgerIcon,
+  OmniyatLogo,
+  OmniyatMonogramLogo,
+  XMarkIcon,
+} from "./Icons";
 
 const Navbar = () => {
   const windowScroll = useWindowScroll();
-  const [bgCol, setBgCol] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const [scroll, setScroll] = useState(windowScroll.y);
-  const router = useRouter();
-  const { setIsFromOpen } = useContext(BookingFormContext);
+  const [animate, setAnimate] = useState(false);
+  const [sticked, setSticked] = useState(false);
+  const [scrolledPast, setScrolledPast] = useState(false);
+
+  const navbarRef = useRef(null);
   const sidebarWrapper = useRef(null);
   const linkWrapper = useRef(null);
+  const router = useRouter();
 
   const navigate = (url) => {
     closeSidebar();
@@ -25,44 +30,35 @@ const Navbar = () => {
   };
 
   useEffect(() => {
-    if (
-      router.pathname === "/rewards-privileges" ||
-      router.pathname === "/contact-us"
-    ) {
-      setBgCol(true);
-    } else {
-      setBgCol(false);
-    }
-  }, [router.pathname]);
-
-  useEffect(() => {
-    var navbar = document.getElementById("navbar");
-    var navHeight = document.getElementById("navbar").offsetHeight;
-
-    if (windowScroll.y > 2) {
-      setScrolled(true);
-    } else {
-      setScrolled(false);
-    }
+    var navHeight = navbarRef.current?.offsetHeight || 0;
 
     const scrolled = windowScroll.y;
 
-    if (scrolled > navHeight) {
-      navbar.classList.add("animate");
+    if (scrolled > window.innerHeight * 2) {
+      setScrolledPast(true);
     } else {
-      navbar.classList.remove("animate");
+      setScrolledPast(false);
+    }
+
+    if (scrolled > navHeight) {
+      setAnimate(true);
+    } else {
+      setAnimate(false);
     }
 
     if (scrolled > scroll) {
-      navbar.classList.remove("sticked");
+      setSticked(false);
     } else {
-      navbar.classList.add("sticked");
+      setSticked(true);
     }
 
     setScroll(scrolled);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [windowScroll.y]);
 
-  const openSidebar = () => {
+  const { contextSafe } = useGSAP({ scope: sidebarWrapper });
+
+  const openSidebar = contextSafe(() => {
     const links = Array.from(linkWrapper?.current.children)
       .map((item) => item)
       .reverse();
@@ -83,18 +79,18 @@ const Navbar = () => {
         opacity: 1,
         duration: 1,
         stagger: 0.1,
-        delay: 0.4,
+        delay: 0.3,
         ease: "power1.out",
       }
     );
-  };
+  });
 
-  const closeSidebar = () => {
+  const closeSidebar = contextSafe(() => {
     const links = Array.from(linkWrapper?.current.children).map((item) => item);
     gsap.to(sidebarWrapper.current, {
       left: "-100%",
       duration: 1,
-      delay: 0.8,
+      delay: 0.4,
       ease: "power1.in",
     });
     gsap.fromTo(
@@ -111,171 +107,145 @@ const Navbar = () => {
         ease: "power1.in",
       }
     );
-  };
+  });
+
+  const fullLogo = useRef(null);
+  const monoGramLogo = useRef(null);
+  const debounceTimer = useRef(null);
+
+  useGSAP(
+    () => {
+      const ctx = gsap.context(() => {
+        const runAnimation = (isSticked) => {
+          if (isSticked) {
+            const tl = gsap.timeline();
+            tl.to(monoGramLogo.current, {
+              opacity: 0,
+              duration: 0.3,
+            });
+            tl.to(fullLogo.current, {
+              opacity: 1,
+              duration: 0.3,
+            });
+          } else {
+            const tl = gsap.timeline();
+            tl.to(fullLogo.current, {
+              opacity: 0,
+              duration: 0.3,
+            });
+            tl.to(monoGramLogo.current, {
+              opacity: 1,
+              duration: 0.3,
+            });
+          }
+        };
+
+        if (debounceTimer.current) {
+          clearTimeout(debounceTimer.current);
+        }
+
+        debounceTimer.current = setTimeout(() => {
+          runAnimation(sticked);
+        }, 200);
+
+        return () => {
+          if (debounceTimer.current) {
+            clearTimeout(debounceTimer.current);
+          }
+        };
+      });
+
+      return () => {
+        ctx.revert();
+      };
+    },
+    { dependencies: [sticked] }
+  );
 
   return (
-    <div>
+    <React.Fragment>
       <nav
-        id="navbar"
+        ref={navbarRef}
         className={cn(
-          "fixed",
-          bgCol || (!bgCol && scrolled)
-            ? "transparent ext-black shadow-lg"
-            : "transparent text-black",
-          "top-0 z-[50] flex w-screen flex-row items-center"
+          "flex items-center justify-center  lg:h-auto w-full top-0 fixed left-0 z-[20] bg-black/20 backdrop-blur-[10px] transition-opacity duration-[0.2s]"
         )}
       >
-        <div className="container flex items-center justify-between px-4 pr-5 lg:px-16 py-2.5 lg:py-0 relative">
-          <div className="flex items-center gap-5 lg">
+        <div className="container h-[60px] w-11/12 flex items-center justify-center gap-[350px] text-white tracking-wider text-sm relative">
+          <div className="absolute left-0 flex items-center gap-5 lg:hidden">
             <HamburgerIcon
-              className=" size-8 cursor-pointer"
+              className=" size-6 cursor-pointer"
               onClick={() => openSidebar()}
             />
           </div>
 
-          <Link
-            href={"/"}
-            aria-label="Home"
-            className="absolute top-[75%] lg:top-1/1 left-[68px] lg:left-1/2 lg:-translate-x-1/2 -translate-y-1/2 lg:hidden"
-          >
-             <Image
-          src="/img/logo.png"
-          height={50}
-          width={200}
-          alt="benefits"
-          className="h-svh lg:h-screen w-screen object-cover object-center"
-        />
-          </Link>
-
-          <div style={{marginTop:2,alignSelf:'center'}} className="hidden lg:flex">
-            <Link
-              href={"/"}
-              aria-label="home"
-              className="absolute top-1/1 left-[45%]  -translate-y-1/2"
+          <Link href="/" aria-label="home" className="abs-center">
+            <div
+              ref={fullLogo}
+              className="h-[20px] lg:h-[20px] abs-center opacity-1"
             >
-              <Image
-          src="/img/logo.png"
-          height={50}
-          width={80}
-          alt="benefits"
-          className="left-[45%]"
-        />
-        </Link>
-            
-          </div>
-          <button
-          //onClick={submitClick}
-          className="font-ABeeZee text-sm" style={{height:30,width:150,backgroundColor:'#000',color:'white'}}
-          type="submit"
-        >
-          Contact Us
-        </button>
+              <OmniyatLogo className="w-auto h-full" />
+            </div>
+
+            <div
+              ref={monoGramLogo}
+              className="h-[25px] lg:h-[35px] abs-center opacity-0"
+            >
+              <OmniyatMonogramLogo className="w-auto h-full" />
+            </div>
+          </Link>
         </div>
       </nav>
       <div
         ref={sidebarWrapper}
         className={cn(
-          "fixed top-0 h-screen -left-full w-screen lg:w-[45vw] bg-white/100 z-[50]  text-black ease-in-out"
+          "fixed top-0 h-screen -left-full w-screen lg:w-[45vw] bg-black/40 z-[50] backdrop-blur-lg text-white ease-in-out"
         )}
       >
-        <div className="horizontal space-between">
         <XMarkIcon
           className="size-6 absolute left-[5%] lg:left-[20%] top-4 lg:top-6 cursor-pointer"
           onClick={() => closeSidebar()}
         />
-        <Image
-          src="/img/logo.png"
-          height={10}
-          width={150}
-          alt="benefits"
-          className="absolute left-[5%] lg:left-[70%] top-4 lg:top-2 cursor-pointer"
-        />       
-        </div>
         <div className="flex flex-col justify-center items-end h-full uppercase">
           <div className="w-[85%] lg:w-[80%] relative">
             <div
-              className="text-2xl lg:text-2xl flex flex-col gap-6 lg:gap-8 *:cursor-pointer"
+              className="text-2xl lg:text-2xl flex flex-col gap-6 lg:gap-8 *:cursor-pointer font-abcOracle"
               ref={linkWrapper}
             >
               <p
                 onClick={() => navigate("/")}
                 className={cn(
                   router.pathname === "/"
-                    ? "text-black"
-                    : "text-[#CBCBCB] hover:#014F54"
+                    ? "text-white"
+                    : "text-[#CBCBCB] hover:text-white"
                 )}
               >
                 HOME
               </p>
               <p
-                onClick={() => navigate("/about-us")}
+                onClick={() => navigate("/services")}
                 className={cn(
-                  router.pathname === "/about-us"
-                    ? "text-black"
-                    : "text-[#CBCBCB] hover:#014F54"
+                  router.pathname === "/services"
+                    ? "text-white"
+                    : "text-[#CBCBCB] hover:text-white"
                 )}
               >
-                Who we are
+                SERVICES
               </p>
               <p
-                onClick={() => navigate("/benefits")}
+                onClick={() => navigate("/masterpieces")}
                 className={cn(
-                  router.pathname === "/benefits"
-                    ? "text-black"
-                    : "text-[#CBCBCB] hover:#014F54"
+                  router.pathname === "/masterpieces"
+                    ? "text-white"
+                    : "text-[#CBCBCB] hover:text-white"
                 )}
               >
-                Services
-              </p>
-              <p
-                //onClick={() => navigate("/rewards-privileges")}
-                className={cn(
-                  router.pathname === "/rewards-privileges"
-                    ? "text-black"
-                    : "text-[#CBCBCB] hover:#014F54"
-                )}
-              >
-                Portfolio
-              </p>
-
-              <p
-                //onClick={() => navigate("/faqs")}
-                className={cn(
-                  router.pathname === "/faqs"
-                    ? "text-black"
-                    : "text-[#CBCBCB] hover:#014F54",
-                  "text-sm lg:text-base mt-6"
-                )}
-              >
-                Blogs
-              </p>
-              <p
-               // onClick={() => navigate("/contact-us")}
-                className={cn(
-                  router.pathname === "/contact-us"
-                    ? "text-black"
-                    : "text-[#CBCBCB] hover:#014F54",
-                  "text-sm lg:text-base -mt-3 lg:-mt-5"
-                )}
-              >
-                Contact 
-              </p>
-              <p
-                //onClick={() => navigate("/contact-us")}
-                className={cn(
-                  router.pathname === "/contact-us"
-                    ? "text-black"
-                    : "text-[#CBCBCB] hover:#014F54",
-                  "text-sm lg:text-base -mt-3 lg:-mt-5"
-                )}
-              >
-                Carrer 
+                Masterpieces
               </p>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </React.Fragment>
   );
 };
 

@@ -19,7 +19,7 @@ const SideBookingForm = () => {
         className="size-6 absolute left-4 lg:right-5 lg:left-auto top-4 lg:top-5 cursor-pointer"
       />
       <div className="flex flex-col items-center w-full mt-12 px-5 lg:px-12">
-        <h1 className="uppercase text-xl lg:text-3xl font-bodoniModa font-medium lg:font-normal">
+        <h1 className="uppercase text-xl lg:text-3xl font-optima font-medium lg:font-normal">
           EXPRESS YOUR INTEREST
         </h1>
         <BookingForm isSideForm={true} />

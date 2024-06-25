@@ -4,14 +4,8 @@ import gsap from "gsap";
 import CustomEase from "gsap/dist/CustomEase";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import "swiper/css";
-import "swiper/css/effect-fade";
-import "swiper/css/navigation";
-import "swiper/css/scrollbar";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
-import SideBookingForm from "./SideBookingForm";
-import StickyFooter from "./StickyFooter";
 
 const Layout = ({ children }) => {
   const router = useRouter();
@@ -62,13 +56,11 @@ const Layout = ({ children }) => {
         {router.pathname !== "/thankyou" ? (
           <>
             <Navbar />
-            <SideBookingForm />
           </>
         ) : null}
         <>{children}</>
         {router.pathname !== "/thankyou" ? (
           <>
-            <StickyFooter />
             <Footer />
           </>
         ) : null}
