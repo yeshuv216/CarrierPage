@@ -9,46 +9,57 @@ const Footer = () => {
   return (
     <div className="bg-black text-white pt-10">
       <div className="grid grid-cols-7 mb-2 pb-[15px] justify-items-center lg:justify-items-start">
-        <div className="col-span-7 lg:col-span-2 lg:pl-16 flex flex-col items-center lg:items-start">
-          <Logo className="size-24 lg:size-32 lg:pl-2 lg:-mt-7" />
-        </div>
-        <div className="col-span-7 lg:col-span-1 mt-6 lg:mt-0 text-sm">
-          <p className="text-[#7f7f7f]">Pages</p>
-          <ul className="grid grid-cols-2 lg:flex flex-col gap-1.5 lg:gap-1 mt-1">
+        
+        <div className="col-span-7 ml-[5vw] w-[40%] lg:col-span-1 mt-6 lg:mt-0 text-sm">
+          <p className="text-[#7f7f7f]">Residential</p>
+          <ul className="grid w-[100vw] grid-cols-2 lg:flex flex-col gap-1.5 lg:gap-1 mt-1">
             <li>
-              <Link href="/">Overview</Link>
+              <Link href="/">AVA at Palm Jumeirah,Dorcheseter collection</Link>
             </li>
             <li>
-              <Link href="/about-us">About Us</Link>
+              <Link href="">ORLA INFINITY,Dorcheseter collection</Link>
             </li>
             <li>
-              <Link href="/benefits">Benefits</Link>
+              <Link href="">ORLA,Dorcheseter collection,Dubai</Link>
             </li>
             <li>
-              <Link href="/rewards-privileges">Rewards & Privileges</Link>
+              <Link href="">VELA,Dorcheseter collection,Dubai</Link>
             </li>
-          </ul>
-        </div>
-        <div className="col-span-3 lg:col-span-1 mt-6 lg:mt-0 text-sm -ml-6 lg:ml-0">
-          <p className="text-[#7f7f7f]">Queries</p>
-          <ul className="flex flex-col gap-1 mt-1">
             <li>
-              <Link href="/faqs">FAQS</Link>
+              <Link href="">VELA VIENTO,Dorcheseter collection,Dubai</Link>
+            </li>
+            <li>
+              <Link href="">AVA AT PALM JUMEIRAH,Dorcheseter collection,Dubai</Link>
             </li>
           </ul>
         </div>
-        <div className="col-span-3 lg:col-span-1 block text-sm mt-6 lg:mt-0 -ml-6 lg:ml-0">
-          <p className="text-[#7f7f7f]">Support</p>
-          <ul className="flex flex-col gap-1 mt-1">
+        <div className="ml-[20vw]">
+          <p className="text-[#7f7f7f]">Mixed Use</p>
+          <ul className="grid w-[100vw] flex flex-col gap-1 mt-1">
             <li>
-              <Link href="/contact-us">Contact Us</Link>
+              <Link href="/">The OPUS by OMNIYAT</Link>
+            </li>
+            <li>
+              <Link href="/">The Lana,Dorcheseter collection,Dubai</Link>
             </li>
           </ul>
         </div>
-        <div className="col-span-7 lg:col-span-2 mt-8 lg:mt-0 pt-2 text-sm hidden lg:flex flex-col items-center lg:items-start">
-          <h1 className="text-xl font-bodoniModa uppercase">
-            Stay in the know
-          </h1>
+        <div className="ml-[30vw]">
+          <p className="text-[#7f7f7f]">Explore</p>
+          <ul className="grid w-[100vw] grid grid-cols-2 lg:flex flex-col gap-1.5 lg:gap-1 mt-1">
+            <li>
+              <Link href="/">Our Story</Link>
+            </li>
+            <li>
+              <Link href="">Contact Us</Link>
+            </li>
+            <li>
+              <Link href="/benefits">News</Link>
+            </li>
+          </ul>
+        </div>
+        <div className="ml-[30vw]">
+        <p className="text-[#7f7f7f]">Stay in the know</p>
           <button
             onClick={() => setIsFromOpen(true)}
             className="text-[10px] lg:text-[14px] uppercase lg:w-[220px] font-medium tracking-wider h-[40px] bg-white text-black w-[140px] mt-2"
@@ -66,7 +77,7 @@ const Footer = () => {
       <div className="border-t border-white border-opacity-5 pt-6 pb-20">
         <div className="grid grid-cols-7 justify-items-center lg:justify-items-start gap-y-4">
           <div className="lg:pl-16 text-sm col-span-7 lg:col-span-2 font-radikalLight">
-            Omniyat &copy; 2024
+            Omniyat &copy; 2023
           </div>
           <div className="col-span-7 lg:col-span-3 w-full"></div>
           <div className="col-span-7 lg:col-span-2 flex gap-4 text-sm ml-[20px] lg:ml-0">

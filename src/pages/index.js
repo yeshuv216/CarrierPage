@@ -4,6 +4,7 @@ import Link from "next/link";
 import {Button} from "@nextui-org/button";
 import { useState } from "react";
 import BookingForm from "@/components/BookingForm";
+import Image from "next/image";
 export default function Home() {
   // img
 
@@ -23,34 +24,7 @@ export default function Home() {
       {showJobs?(
         <div>
       <section  className="relative">
-      <video
-          id="video"
-          style={{filter:"brightness('30%')"}}
-          src="/videos1/3.mp4#t=0.1"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="none"
-          poster="/img/banner_H.webp"
-          className="h-[100vh] w-screen object-cover object-center hidden sm:block"
-        >
-          <source src="/videos1/3.mp4#t=0.1" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-        <video
-          id="video"
-          src="/videos1/3.mp4"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="none"
-          poster="/img/banner_V.webp"
-          className="sm:hidden h-svh w-screen object-cover"
-        >
-          <source src="/videos1/3.mp4" type="video/mp4" />
-        </video>
+      <Image src={require('../../public/img/hero.png')} className="h-[100vh] w=[100vh]"></Image>
          <div className="absolute left-1/2 -translate-x-1/2 bottom-1/2 text-white w-full">
           <h1 className="font-AbhayaLibre title text-center mt-0">
           OPPORTUNITIES AT <br />OMNIYAT
@@ -91,23 +65,33 @@ export default function Home() {
         <section
         className="grid items-right ml-[60%] lg:mt-2 container w-1/12"
       >
-        <Button onClick={()=>setClickedIndex(index)} radius="none">
+        <button className="font-ABeeZee text-sm" style={{height:30,width:150,backgroundColor:'#000',opacity:'50%',color:'white'}} onClick={()=>setClickedIndex(index)} radius="none">
         APPLY NOW
-      </Button> 
+      </button> 
       </section>
       </section>
       {clickedIndex==index?(
-      <section className="horizontal">
-<div  className="ml-[8%] w-[60%]">
-  RESPONSIBILITIES:
-Delivering projects on time to budget & Coordination considering objectives and requirements.
-Produce and control of designs in compliance with regulatory By-Laws and Design guidelines.
-Knowledge of Local and International Building Codes for Compliance and Design approvals
-Knowledge of IBC, NFPA, DBC, FLSC Codes and applications in Design development process
-Familiar with DM, Green Building, DDA, JAFZA, TECOM and other Regulations under AHJ
-Assist in follow-up design Information, NOCs from DEWA, DCD, DCAA and others applicable Revit Architecture to LOD 300, documentation, data extracts, clash detections & Project delivery.
+      <section className="h-[70vh] scroll space-between horizontal">
+<div  style={{overflow:scroll}} className="font-Poppins items-center text-black-40 ml-[8.5%]">
+<div style={{fontWeight:'bold'}} className="font-Poppins text-black-bold mt-5">
+RESPONSIBILITIES:
 </div>
-<div className=" ml-[40%]">
+<br/>
+<div style={{color:'grey',width:500}}>
+. Delivering projects on time to budget & Coordination considering objectives and requirements.
+<br/>
+.Produce and control of designs in compliance with regulatory By-Laws and Design guidelines.
+<br/>
+.Knowledge of Local and International Building Codes for Compliance and Design approvals
+<br/>
+.Knowledge of IBC, NFPA, DBC, FLSC Codes and applications in Design development process
+<br/>
+.Familiar with DM, Green Building, DDA, JAFZA, TECOM and other Regulations under AHJ
+<br/>
+.Assist in follow-up design Information, NOCs from DEWA, DCD, DCAA and others applicable Revit Architecture to LOD 300, documentation, data extracts, clash detections & Project delivery.
+</div>
+</div>
+<div className="ml-[15%]">
 <BookingForm submitClick={submit}></BookingForm>
 </div>
 </section>

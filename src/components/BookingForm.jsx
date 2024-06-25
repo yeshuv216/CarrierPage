@@ -54,6 +54,7 @@ const BookingForm = ({ isSideForm = false,submitClick }) => {
   var li_fat_id = searchParams.get("li_fat_id");
   var twclid = searchParams.get("twclid");
   var gad = searchParams.get("gad");
+  var options=[{label:"Banking",value:"", label:"Construction",value:""}]
 
   const handleOnSubmit = async (e) => {
     e.preventDefault();
@@ -97,25 +98,42 @@ const BookingForm = ({ isSideForm = false,submitClick }) => {
   return (
     <form
       onSubmit={handleOnSubmit}
-      className={cn(
-        "flex flex-col ",
-        isSideForm
-          ? "w-full gap-2 lg:gap-2 mt-6 lg:mt-10"
-          : "w-11/12 lg:w-[27%] gap-4 lg:gap-8 mt-12"
-      )}
+      className={"w-full gap-2 lg:gap-2 mt-6 lg:mt-10 h-[10vh]"}
     >
       
-      <div className="">
+      <div>
         <input style={{height:30,marginTop:10,borderColor:'#000',borderWidth:1,padding:5,width:500}} placeholder="Name"></input>
-        <input style={{height:30,marginTop:10,borderColor:'#000',borderWidth:1,padding:5,width:500}} placeholder="Phone no."></input>
         <input style={{height:30,marginTop:10,borderColor:'#000',borderWidth:1,padding:5,width:500}} placeholder="Email ID"></input>
-        <input style={{height:30,marginTop:10,borderColor:'#000',borderWidth:1,padding:5,width:500}} placeholder="Years of Experience"></input>
+        <input style={{height:30,marginTop:10,borderColor:'#000',borderWidth:1,padding:5,width:500}} placeholder="Phone no."></input>
+        <input style={{height:30,marginTop:10,borderColor:'#000',borderWidth:1,padding:5,width:500}} placeholder="Current Employer"></input>
+        <select style={{height:30,marginTop:10,borderColor:'#000',borderWidth:1,padding:5,width:500}} placeholder="Industry Experience">
+          {options.map((item,index)=>(
+           <options>{item?.label}</options>
+          ))}
+        </select>
+        <input style={{height:30,marginTop:10,borderColor:'#000',borderWidth:1,padding:5,width:500}} placeholder="Current Title"></input>
+        <select style={{height:30,marginTop:10,borderColor:'#000',borderWidth:1,padding:5,width:500}} placeholder="Total Years of
+Experience">
+          {options.map((item,index)=>(
+           <options>{item?.label}</options>
+          ))}
+        </select>
+        <select style={{height:30,marginTop:10,borderColor:'#000',borderWidth:1,padding:5,width:500}} placeholder="Years of Experience
+in UAE">
+          {options.map((item,index)=>(
+           <options>{item?.label}</options>
+          ))}
+        </select>
+        <select style={{height:30,marginTop:10,borderColor:'#000',borderWidth:1,padding:5,width:500}} placeholder="Notice Period">
+          {options.map((item,index)=>(
+           <options>{item?.label}</options>
+          ))}
+        </select>
         <input style={{height:30,marginTop:10,borderColor:'#000',borderWidth:1,padding:5,width:500}} placeholder="Upload Resume*"></input>
         <button
           onClick={submitClick}
-          style={{width:500}}
+          className="font-ABeeZee text-sm mt-[6%]" style={{height:30,width:150,backgroundColor:'#000',opacity:'50%',color:'white'}}
           type="submit"
-          className={cn("cta", isSideForm ? "mt-4 lg:mt-6" : "mt-8 lg:mt-12")}
         >
           Submit Now
         </button>
