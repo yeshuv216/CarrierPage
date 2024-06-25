@@ -101,29 +101,21 @@ const BookingForm = ({ isSideForm = false, submitClick }) => {
       className={"w-full flex flex-col gap-3 lg:gap-3.5 mt-6 lg:mt-10"}
     >
       <>
-        <input type="text" className="inputItem" placeholder="Name"></input>
-        <input type="text" className="inputItem" placeholder="Email ID"></input>
-        <input
-          type="text"
-          className="inputItem"
-          placeholder="Phone no."
-        ></input>
+        <input type="text" className="inputItem" placeholder="Name" />
+        <input type="text" className="inputItem" placeholder="Email ID" />
+        <input type="text" className="inputItem" placeholder="Phone no." />
         <input
           type="text"
           className="inputItem"
           placeholder="Current Employer"
-        ></input>
+        />
         <select className="inputItem" placeholder="Industry Experience">
           <option value="">Industry Experience</option>
           {options.map((item, index) => (
-            <options key={index}>{item?.label}</options>
+            <option key={index}>{item?.label}</option>
           ))}
         </select>
-        <input
-          type="text"
-          className="inputItem"
-          placeholder="Current Title"
-        ></input>
+        <input type="text" className="inputItem" placeholder="Current Title" />
         <select
           className="inputItem"
           placeholder="Total Years of
@@ -137,17 +129,13 @@ Experience"
         <select className="inputItem" placeholder="Notice Period">
           <option value="">Notice Period</option>
           {options.map((item, index) => (
-            <options key={index}>{item?.label}</options>
+            <option key={index}>{item?.label}</option>
           ))}
         </select>
         <p className="text-xs mt-2.5 font-light">
           Resume * [ File types : .pdf, .docx, .doc | File size : up to 5 MB ]
         </p>
-        <input
-          type="file"
-          className="inputItem"
-          placeholder="Upload Resume*"
-        ></input>
+        <input type="file" className="inputItem" placeholder="Upload Resume*" />
         <button
           onClick={submitClick}
           className="text-sm w-full text-left bg-black/40 uppercase py-2 pl-14"

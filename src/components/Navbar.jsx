@@ -15,9 +15,7 @@ import {
 const Navbar = () => {
   const windowScroll = useWindowScroll();
   const [scroll, setScroll] = useState(windowScroll.y);
-  const [animate, setAnimate] = useState(false);
   const [sticked, setSticked] = useState(false);
-  const [scrolledPast, setScrolledPast] = useState(false);
 
   const navbarRef = useRef(null);
   const sidebarWrapper = useRef(null);
@@ -30,21 +28,7 @@ const Navbar = () => {
   };
 
   useEffect(() => {
-    var navHeight = navbarRef.current?.offsetHeight || 0;
-
     const scrolled = windowScroll.y;
-
-    if (scrolled > window.innerHeight * 2) {
-      setScrolledPast(true);
-    } else {
-      setScrolledPast(false);
-    }
-
-    if (scrolled > navHeight) {
-      setAnimate(true);
-    } else {
-      setAnimate(false);
-    }
 
     if (scrolled > scroll) {
       setSticked(false);
