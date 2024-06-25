@@ -160,9 +160,16 @@ const Navbar = () => {
           alt="benefits"
           className="left-[45%]"
         />
-            </Link>
+        </Link>
             
           </div>
+          <button
+          //onClick={submitClick}
+          className="font-ABeeZee text-sm" style={{height:30,width:150,backgroundColor:'#000',color:'white'}}
+          type="submit"
+        >
+          Contact Us
+        </button>
         </div>
       </nav>
       <div
