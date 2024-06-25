@@ -108,25 +108,25 @@ const BookingForm = ({ isSideForm = false,submitClick }) => {
         <input style={{height:30,marginTop:10,borderColor:'#000',borderWidth:1,padding:5,width:500}} placeholder="Current Employer"></input>
         <select style={{height:30,marginTop:10,borderColor:'#000',borderWidth:1,padding:5,width:500}} placeholder="Industry Experience">
           {options.map((item,index)=>(
-           <options>{item?.label}</options>
+           <options key={index}>{item?.label}</options>
           ))}
         </select>
         <input style={{height:30,marginTop:10,borderColor:'#000',borderWidth:1,padding:5,width:500}} placeholder="Current Title"></input>
         <select style={{height:30,marginTop:10,borderColor:'#000',borderWidth:1,padding:5,width:500}} placeholder="Total Years of
 Experience">
           {options.map((item,index)=>(
-           <options>{item?.label}</options>
+           <options key={index}>{item?.label}</options>
           ))}
         </select>
         <select style={{height:30,marginTop:10,borderColor:'#000',borderWidth:1,padding:5,width:500}} placeholder="Years of Experience
 in UAE">
           {options.map((item,index)=>(
-           <options>{item?.label}</options>
+           <options key={index}>{item?.label}</options>
           ))}
         </select>
         <select style={{height:30,marginTop:10,borderColor:'#000',borderWidth:1,padding:5,width:500}} placeholder="Notice Period">
           {options.map((item,index)=>(
-           <options>{item?.label}</options>
+           <options key={index}>{item?.label}</options>
           ))}
         </select>
        <p style={{fontSize:10,marginTop:10}} className="text-grey">Resume * [ File types : .pdf, .docx, .doc | File size : up to 5 MB ]</p> 
