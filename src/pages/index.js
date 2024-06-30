@@ -1,25 +1,65 @@
 import BookingForm from "@/components/BookingForm";
 import { cn } from "@/lib/utils";
+import axios from "axios";
 import Head from "next/head";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+
 export default function Home() {
   // img
 
-  const jobData = [
-    "DOCUMENT CONTROLLER",
-    "BRAND MANAGER",
-    "DIGITAL PRODUCT DIRECTOR",
-    "SALES ASSOCIATE",
-    "RESOURCE MANAGER",
-  ];
+  const [jobData,setJobData] = useState();
+  const [allSubmittedJobData,setAllSubmittedJobData] = useState();
+  const [clickedJobDetails,setClickedJobDetails] = useState([]);
   const [clickedIndex, setClickedIndex] = useState(-1);
   const [showJobs, setShowJobs] = useState(true);
 
-  const submit = () => {
-    setShowJobs(false);
-    setClickedIndex(-1);
-  };
+  const submit = (payload) => {
+    
+    try {
+      axios(`http://localhost:8080/jobs`, {
+        method: "POST",
+        data: payload,
+        headers: {
+         'Content-Type': 'multipart/form-data'
+        },
+      }).then((res) => {
+       alert("Data submitted successfully")
+      });
+    }catch (error) {
+      
+    // setShowJobs(false);
+    // setClickedIndex(-1);
+  }
+};
+
+const getAllJobSubmitted = (payload) => {
+    
+  try {
+    axios(`http://localhost:8080/jobs`, {
+      method: "GET",
+      data: '',
+    }).then((res) => {
+     console.log("Submitted job data",JSON.stringify(res))
+    });
+  }catch (error) {
+    
+  // setShowJobs(false);
+  // setClickedIndex(-1);
+}
+};
+ 
+  useEffect(() => {
+    axios.get("http://localhost:8080/getJobPost").then((response) => {
+      setJobData(response?.data?.data)
+    });
+    getAllJobSubmitted()
+  }, []);
+
+  const getClickedJobPostDetails=(index)=>{
+    setClickedIndex(index)
+    setClickedJobDetails(jobData[index])
+  }
 
   return (
     <>
@@ -57,7 +97,7 @@ export default function Home() {
       </section>
 
       <section className="container w-11/12 mt-14 lg:mt-28 mb-16 lg:mb-32">
-        {jobData.map((item, index) => (
+        {jobData&&jobData.map((item, index) => (
           <React.Fragment key={item}>
             <div
               className={cn(
@@ -66,8 +106,8 @@ export default function Home() {
               )}
             >
               <div className="w-full flex justify-between">
-                <h3 className="font-optima text-lg lg:text-2xl">{item}</h3>
-                <button className="btn" onClick={() => setClickedIndex(index)}>
+                <h3 className="font-optima text-lg lg:text-2xl">{item?.name}</h3>
+                <button className="btn" onClick={() => getClickedJobPostDetails(index)}>
                   APPLY NOW
                 </button>
               </div>
@@ -82,103 +122,25 @@ export default function Home() {
                   <br />
                   <ul className="para list-disc pl-6">
                     <li>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Voluptatum earum odio architecto impedit magnam et aperiam
-                      quas rem, modi sapiente.
+                      {item?.description1}
                     </li>
                     <li>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Voluptatum earum odio architecto impedit magnam et aperiam
-                      quas rem, modi sapiente.
+                    {item?.description2}
                     </li>
                     <li>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Voluptatum earum odio architecto impedit magnam et aperiam
-                      quas rem, modi sapiente.
+                    {item?.description3}
                     </li>
-                    <li>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Voluptatum earum odio architecto impedit magnam et aperiam
-                      quas rem, modi sapiente.
-                    </li>
-                    <li>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Voluptatum earum odio architecto impedit magnam et aperiam
-                      quas rem, modi sapiente. Lorem ipsum dolor sit amet
-                      consectetur adipisicing elit. Iure labore illo explicabo
-                      veniam dolore minus eligendi nostrum expedita facilis
-                      distinctio id pariatur laborum aperiam voluptate eveniet
-                      quod ratione officia, impedit vitae. Labore nobis dolor,
-                      eius ipsa hic illo et sint accusantium, rerum nemo
-                      explicabo eos pariatur, totam quisquam quos quas veritatis
-                      possimus ad eum non fuga laudantium neque sed. Ab autem
-                      nostrum aperiam iusto, at atque, quae beatae perspiciatis
-                      minima perferendis error, temporibus harum. Tempora,
-                      dolor? Culpa perferendis id natus minima temporibus a.
-                      Blanditiis suscipit voluptate sit natus dolorum, tempora
-                      aspernatur tempore, dolore delectus perferendis expedita
-                      quod illum. Sapiente neque molestias magni, dolores eius
-                      libero beatae molestiae quos? Quidem inventore perferendis
-                      ea autem! Hic totam, dicta quis inventore placeat
-                      mollitia! Praesentium explicabo ad cumque voluptatem
-                      possimus nesciunt, quo tempora aut quam ipsam! Quaerat, ea
-                      dolore! Incidunt porro repellendus rem maxime tempora
-                      aperiam repellat veniam illum quia, quibusdam, sint
-                      exercitationem. Recusandae totam laudantium illo, placeat,
-                      optio itaque, consequuntur ipsum libero obcaecati
-                      reiciendis quos hic molestias iure magnam a. Repellendus
-                      qui recusandae nesciunt aliquam nobis, aspernatur minima
-                      autem ut magni doloribus assumenda quis facere, est
-                      voluptatibus obcaecati impedit doloremque nostrum vitae
-                      officia cumque quas deleniti animi fugiat? Iusto earum
-                      quas optio sint!
-                    </li>
+                   
                   </ul>
                 </div>
                 <div className="w-full lg:w-[50%]">
-                  <BookingForm submitClick={submit}></BookingForm>
+                  <BookingForm jobDetails={clickedJobDetails}  submitClick={submit}></BookingForm>
                 </div>
               </section>
             ) : null}
           </React.Fragment>
         ))}
       </section>
-
-      {/* <section
-          data-fade-up
-          className="grid place-items-center mt-16 lg:mt-24 container w-11/12"
-        >
-          <h1 className="font-AbhayaLibre title text-center mt-3">
-            THANK FOR APPLYING
-          </h1>
-          <p className="para text-center mt-4 w-full lg:w-[100%] text-pretty text-black font-light">
-            Thank you for your interest in a career with OMNIYAT. We have
-            received your application
-            <br />
-            and our team will review your profile. If your profile match our
-            requirements, we will reach
-            <br />
-            out to you soon. We appreciate your interest in our company and look
-            forward to the
-            <br />
-            possibility of working together.
-          </p>
-          <button
-            onClick={() => setShowJobs(true)}
-            style={{
-              backgroundColor: "#000",
-              color: "#fff",
-              height: 60,
-              width: 300,
-              opacity: "50%",
-              marginBottom: "15%",
-            }}
-            type="submit"
-            className={"mt-8 lg:mt-12 bg-light-black"}
-          >
-            CONTINUE EXPLORING OPPORTUNIITES
-          </button>
-        </section> */}
     </>
   );
 }
