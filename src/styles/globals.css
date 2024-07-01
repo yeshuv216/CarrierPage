@@ -75,7 +75,7 @@
   }
 
   .inputItem {
-    @apply placeholder:text-black/80 py-2 pl-5 text-sm border border-black;
+    @apply placeholder:text-black/80 py-2 px-5 text-sm border border-black;
   }
 
   .inputItemMultiline {

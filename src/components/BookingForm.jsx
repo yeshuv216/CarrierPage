@@ -160,7 +160,7 @@ function getFirstPart(str) {
         <input type="file" className="inputItem" placeholder="Upload Resume*" onChange={onSelectResume}/>
         <button
           onClick={(e)=>handleOnSubmit(e)}
-          className="btn w-[38%] ml-[69%]"
+          className="btn w-fit ml-auto"
     
           type="submit"
         >

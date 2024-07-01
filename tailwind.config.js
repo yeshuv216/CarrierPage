@@ -18,5 +18,9 @@ module.exports = {
         gold: "#BB9C65",
       },
     },
-  }
+  },
+  plugins: [
+    require("@tailwindcss/typography"),
+    // ...
+  ],
 };

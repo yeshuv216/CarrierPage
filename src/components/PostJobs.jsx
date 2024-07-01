@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 const PostJobs = ({ submitClick }) => {
   const [name, setName] = useState("");
@@ -7,14 +7,64 @@ const PostJobs = ({ submitClick }) => {
   const [expInUae, setExpInUae] = useState("");
   const [noticePeriod, setNoticePeriod] = useState("");
 
+  const ref = useRef();
+  const [isMounted, setIsMounted] = useState(false);
+
+  const initialzeEditor = useCallback(async () => {
+    const EditorJS = (await import("@editorjs/editorjs")).default;
+    const List = (await import("@editorjs/list")).default;
+
+    if (!ref.current) {
+      const editor = new EditorJS({
+        holder: "editor",
+        onReady() {
+          ref.current = editor;
+        },
+        placeholder: "Enter Job Description",
+        inlineToolbar: true,
+        data: { blocks: description },
+        tools: {
+          list: {
+            class: List,
+            inlineToolbar: true,
+            config: {
+              defaultStyle: "unordered",
+            },
+          },
+        },
+      });
+    }
+  }, []);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") setIsMounted(true);
+  }, []);
+
+  useEffect(() => {
+    const init = async () => {
+      await initialzeEditor();
+    };
+
+    if (isMounted) {
+      init();
+
+      return () => {
+        ref.current?.destroy();
+        ref.current = undefined;
+      };
+    }
+  }, [isMounted, initialzeEditor]);
+
+  if (!isMounted) return null;
+
   const handleOnSubmit = async (e) => {
     e.preventDefault();
 
+    const desc = await ref.current.save();
+
     const payload = {
       name: name,
-      description1: description,
-      description2: description2,
-      description3: description3,
+      description1: desc,
       expInUae: expInUae,
       totalExperience: totalExp,
       noticePeriod: noticePeriod,
@@ -23,15 +73,16 @@ const PostJobs = ({ submitClick }) => {
     submitClick(payload);
   };
 
+  // const blocks = await ref?.current?.save();
+
   return (
     <div className="flex flex-col lg:flex-row gap-x-36">
-      <div>
+      <div className="w-full lg:w-[80%]">
         <p className="text-sm">Responsibilities</p>
-        <textarea
-          value={description}
-          onChange={(e) => setdescription(e.target.value)}
-          className="inputItemMultiline mt-4 w-[400px] h-[400px]"
-          placeholder="Description 1"
+        <div
+          data-lenis-prevent
+          id="editor"
+          className="h-[450px] overflow-scroll inputItem w-full mt-6"
         />
       </div>
       <div className={"w-full flex flex-col gap-3 lg:gap-3.5"}>

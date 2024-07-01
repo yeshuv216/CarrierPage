@@ -7,7 +7,7 @@ export default function Cms() {
   const submit = (payload) => {
     console.log(payload);
     try {
-      axios(`http://localhost:8080/jobPost`, {
+      axios(`http://localhost:3001/jobPost`, {
         method: "POST",
         data: payload,
         headers: {

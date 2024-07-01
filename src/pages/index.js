@@ -1,9 +1,17 @@
 import BookingForm from "@/components/BookingForm";
 import { cn } from "@/lib/utils";
 import axios from "axios";
+import dynamic from "next/dynamic";
 import Head from "next/head";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
+
+const JobDesc = dynamic(
+  async () => (await import("editorjs-react-renderer")).default,
+  {
+    ssr: false,
+  }
+);
 
 export default function Home() {
   // img
@@ -46,10 +54,10 @@ export default function Home() {
   };
 
   useEffect(() => {
-    axios.get("http://localhost:8080/getJobPost").then((response) => {
+    axios.get("http://localhost:3001/getJobPost").then((response) => {
       setJobData(response?.data?.data);
     });
-    getAllJobSubmitted();
+    // getAllJobSubmitted();
   }, []);
 
   const getClickedJobPostDetails = (index) => {
@@ -122,11 +130,9 @@ export default function Home() {
                   >
                     <h3 className="font-bold text-sm">RESPONSIBILITIES:</h3>
                     <br />
-                    <ul className="para list-disc pl-6">
-                      <li>{item?.description1}</li>
-                      <li>{item?.description2}</li>
-                      <li>{item?.description3}</li>
-                    </ul>
+                    <div className="w-full prose text-black marker:text-black">
+                      <JobDesc data={item?.description1} />
+                    </div>
                   </div>
                   <div className="w-full lg:w-[50%]">
                     <BookingForm
