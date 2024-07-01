@@ -4,32 +4,29 @@ import Head from "next/head";
 import React from "react";
 
 export default function Cms() {
-
   const submit = (payload) => {
-    console.log(payload)
+    console.log(payload);
     try {
       axios(`http://localhost:8080/jobPost`, {
         method: "POST",
         data: payload,
         headers: {
-         'Content-Type': 'application/json'
+          "Content-Type": "application/json",
         },
       }).then((res) => {
-       alert("Data submitted successfully")
+        alert("Data submitted successfully");
       });
-    }catch (error) {
-  }
-};
- 
+    } catch (error) {}
+  };
 
   return (
     <>
       <Head>
         <title>Omniyat</title>
       </Head>
-                <div className="w-full lg:w-[50%] items-center mt-[10%]">
-                  <PostJobs submitClick={submit}></PostJobs>
-                </div>
+      <div className="container w-11/12 mt-32 mb-20">
+        <PostJobs submitClick={submit}></PostJobs>
+      </div>
     </>
   );
 }
