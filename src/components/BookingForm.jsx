@@ -107,6 +107,7 @@ function getFirstPart(str) {
       className={"w-full flex flex-col gap-3 lg:gap-3.5 mt-6 lg:mt-10"}
     >
       <>
+      
         <input value={name} onChange={(e)=>setName(e.target.value)} type="text"   className="inputItem" placeholder="Name" />
         <input value={emailId} onChange={(e)=>setEmailId(e.target.value)} type="text" className="inputItem" placeholder="Email ID" />
         <input value={phone} onChange={(e)=>setPhone(e.target.value)} type="text" className="inputItem" placeholder="Phone no." />

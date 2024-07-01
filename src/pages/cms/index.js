@@ -27,7 +27,7 @@ export default function Cms() {
       <Head>
         <title>Omniyat</title>
       </Head>
-                <div  style={{justifyContent:'center',alignItems:'center',marginLeft:'30%'}} className="w-full lg:w-[50%] items-center mt-[10%]">
+                <div className="w-full lg:w-[50%] items-center mt-[10%]">
                   <PostJobs submitClick={submit}></PostJobs>
                 </div>
     </>

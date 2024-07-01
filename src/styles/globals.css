@@ -78,6 +78,10 @@
     @apply placeholder:text-black/80 py-2 pl-5 text-sm border border-black;
   }
 
+  .inputItemMultiline {
+    @apply placeholder:text-black/80 py-2 pl-5 text-sm border border-black;
+  }
+
   .inputItem2 {
     @apply placeholder:text-gray pl-4 py-2.5 w-full bg-[#EFE9E4] text-xs lg:text-sm font-light;
   }
